@@ -1,0 +1,28 @@
+From ca6b4033d421533be32b77139919c60981a07cee Mon Sep 17 00:00:00 2001
+From: Christian Marangi <ansuelsmth@gmail.com>
+Date: Sat, 22 Oct 2022 16:55:21 +0200
+Subject: [PATCH] ARM: dts: qcom: ipq8064: disable mmc-ddr-1_8v for sdcc1
+
+It was reported non working mmc with this option enabled. Disable it to
+restore correct functionality of this SoC feature.
+
+Signed-off-by: Christian Marangi <ansuelsmth@gmail.com>
+---
+ arch/arm/boot/dts/qcom-ipq8064.dtsi | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/arch/arm/boot/dts/qcom-ipq8064.dtsi b/arch/arm/boot/dts/qcom-ipq8064.dtsi
+index 90c08b51680a..01ff24560ee6 100644
+--- a/arch/arm/boot/dts/qcom-ipq8064.dtsi
++++ b/arch/arm/boot/dts/qcom-ipq8064.dtsi
+@@ -756,7 +756,6 @@ sdcc1: mmc@12400000 {
+ 				non-removable;
+ 				cap-sd-highspeed;
+ 				cap-mmc-highspeed;
+-				mmc-ddr-1_8v;
+ 				vmmc-supply = <&vsdcc_fixed>;
+ 				dmas = <&sdcc1bam 2>, <&sdcc1bam 1>;
+ 				dma-names = "tx", "rx";
+-- 
+2.37.2
+
